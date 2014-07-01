@@ -169,6 +169,127 @@
             <param name="cropName"></param>
             <returns></returns>
         </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.MultiUrlPickerState">
+            <summary>
+            NOTE: taken from uComponents
+            
+            The DTO which contains the state of a Multi URL picker at any time.
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.MultiUrlPickerState.#ctor">
+            <summary>
+            Sets defaults
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.MultiUrlPickerState.Deserialize(System.String)">
+            <summary>
+            Returns a MultiUrlPickerState based on a serialized string.
+            
+            Tries to infer the format of the serialized data based on known types.  Will throw exceptions
+            if it fails to parse.
+            </summary>
+            <param name="serializedState">An instance of MultiUrlPickerState as a serialized string</param>
+            <returns>The state</returns>
+        </member>
+        <member name="P:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.MultiUrlPickerState.Items">
+            <summary>
+            The items created
+            </summary>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerMode">
+            <summary>
+            NOTE: taken from uComponents
+            
+            The modes this datatype can implement - they refer to how the local/external content is referred.
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerMode.URL">
+            <summary>
+            URL string
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerMode.Content">
+            <summary>
+            Content node
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerMode.Media">
+            <summary>
+            Media node
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerMode.Upload">
+            <summary>
+            Upload a file
+            </summary>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerDataFormat">
+            <summary>
+            Determines in which serialized format the the data is saved to the database
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerDataFormat.Xml">
+            <summary>
+            Store as XML
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerDataFormat.Csv">
+            <summary>
+            Store as comma delimited (CSV, single line)
+            </summary>
+        </member>
+        <member name="F:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerDataFormat.Json">
+            <summary>
+            Store as a JSON object, which can be deserialized by .NET or JavaScript
+            </summary>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState">
+            <summary>
+            NOTE: taken from uComponents package
+            
+            The DTO which contains the state of a URL picker at any time.
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.#ctor">
+            <summary>
+            Set defaults
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.Deserialize(System.String)">
+            <summary>
+            Returns a UrlPickerState based on a serialized string.
+            
+            Tries to infer the format of the serialized data based on known types.  Will throw exceptions
+            if it fails to parse.
+            </summary>
+            <param name="serializedState">An instance of UrlPickerState as a serialized string</param>
+            <returns>The state</returns>
+        </member>
+        <member name="P:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.Title">
+            <summary>
+            Title for the URL
+            </summary>
+        </member>
+        <member name="P:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.Mode">
+            <summary>
+            Mode that the URL picker is set to.  See UrlPickerMode.
+            </summary>
+        </member>
+        <member name="P:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.NodeId">
+            <summary>
+            Node ID, if set, for a content node
+            </summary>
+        </member>
+        <member name="P:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.Url">
+            <summary>
+            URL which is the whole point of this datatype
+            </summary>
+        </member>
+        <member name="P:PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.NewWindow">
+            <summary>
+            Whether the URL is to open in a new window
+            </summary>
+        </member>
         <member name="T:PG.UmbracoExtensions.Helpers.MailHelper">
             <summary>
             Simple class for sending emails in Umbraco
@@ -301,7 +422,7 @@
         <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetMultiPickerUrl(System.String)">
             <summary>
             Gets the url picker url
-            NOTE: gets adds only links with title
+            NOTE: adds only links with title
             </summary>
             <param name="urlPickerValue"></param>
             <returns></returns>
@@ -310,7 +431,6 @@
             <summary>
             Gets the url picker url
             </summary>
-            <param name="urlPickerValue"></param>
             <returns></returns>
         </member>
         <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetTargetValue(Umbraco.Core.Models.IPublishedContent,System.String)">

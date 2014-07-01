@@ -20,13 +20,13 @@ namespace PhoenixConverters.Models
             icon = "icon-link";
         }
 
-        public UrlPickerV7(PG.UmbracoExtensions.Helpers.UrlPicker.UrlPickerState urlPickerState)
+        public UrlPickerV7(PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState urlPickerState)
             :   this()
         {
             id = urlPickerState.NodeId;
             name = urlPickerState.Title;
             url = urlPickerState.Url;
-            isMedia = urlPickerState.Mode == PG.UmbracoExtensions.Helpers.UrlPicker.UrlPickerMode.Media;
+            isMedia = urlPickerState.Mode == PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerMode.Media;
             target = urlPickerState.NewWindow ? "_blank" : null;
         }
 

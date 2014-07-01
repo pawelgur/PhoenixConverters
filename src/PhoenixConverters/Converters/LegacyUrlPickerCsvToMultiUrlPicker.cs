@@ -75,7 +75,7 @@ namespace PhoenixConverters.Converters
 
             try
             {
-                var urlPickerState = PG.UmbracoExtensions.Helpers.UrlPicker.UrlPickerState.Deserialize(input);
+                var urlPickerState = PG.UmbracoExtensions.Helpers.LegacyUrlPicker.UrlPickerState.Deserialize(input);
                 var model = new UrlPickerV7(urlPickerState);
 
                 //proper name
