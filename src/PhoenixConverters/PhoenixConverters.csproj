@@ -116,6 +116,10 @@
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PG.UmbracoExtensions.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependencies\PG.UmbracoExtensions.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="SQLCE4Umbraco">
       <HintPath>..\packages\UmbracoCms.Core.7.0.4\lib\SQLCE4Umbraco.dll</HintPath>
       <Private>False</Private>
@@ -232,16 +236,22 @@
     <Compile Include="Controllers\PhoenixTreeController.cs" />
     <Compile Include="Converters\DampXmlToMntp.cs" />
     <Compile Include="Converters\LegacyMntpToMntp.cs" />
+    <Compile Include="Converters\LegacyUrlPickerCsvToMultiUrlPicker.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Models\AffectedContent.cs" />
     <Compile Include="Models\ConversionResult.cs" />
     <Compile Include="Models\PropertyResult.cs" />
+    <Compile Include="Models\UrlPickerV7.cs" />
     <Compile Include="PhoenixCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dependencies\PG.UmbracoExtensions.Helpers.dll" />
+    <Content Include="Dependencies\PG.UmbracoExtensions.Helpers.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

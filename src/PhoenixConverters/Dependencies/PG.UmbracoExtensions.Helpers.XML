@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PG.UmbracoExtensions.Helpers</name>
+    </assembly>
+    <members>
+        <member name="T:PG.UmbracoExtensions.Helpers.GlobalHelpers">
+            <summary>
+            Global helpers central class (uncategorized methods)
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetRelativeTime(System.String)">
+            <summary>
+            Gets "time ago" format string relative to passed date string
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.DescribeTimeSpan(System.TimeSpan)">
+            <summary>
+            Formats time span as "time ago" string
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.ConstructAnchorElements(System.String)">
+            <summary>
+            Replaces url's in text to anchor tags
+            Sets target as blank and ads nofollow attribute
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetFullUrl(System.String)">
+            <summary>
+            Gets full url or domain url only if relative url is not specified
+            </summary>
+            <param name="relativeUrl"></param>
+            <returns>http[s]://www.adform.com[relativeUrl] (www.adform.com is example hostname)</returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetClientIp(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Gets remote host IP adress
+            
+            NOTE: not tested, taken from stackoverflow
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetXmlNodeList(System.String)">
+            <summary>
+            Returns xml nodes list from string containing multiple nodes (with no root element)
+            </summary>
+            <param name="xmlString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetSettingNode(System.String,Umbraco.Web.UmbracoHelper)">
+            <summary>
+            gets setting node by name from first site
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetLibraryNode(System.String,Umbraco.Web.UmbracoHelper)">
+            <summary>
+            gets library node by name from first site
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetRootNode(Umbraco.Web.UmbracoHelper)">
+            <summary>
+            Gets root content node based on current context or just first node of homepage derivative
+            TODO: think of better implementation of no context fallback
+            </summary>
+            <param name="umbraco"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetPostsForPage``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            gets posts for specified page
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.GetPageNr(System.Web.HttpRequestBase,System.String)">
+            <summary>
+            Gets page number from request url parameters ("p" by default). Returns 1 if not set.
+            </summary>
+            <param name="request"></param>
+            <param name="paramName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.GlobalHelpers.ToIntList(System.String,System.String)">
+            <summary>
+            Converts delimetered number string to int list. Usable for converting multiple node fields
+            </summary>
+            <param name="text"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetThumbnailUrl(Umbraco.Core.Models.IPublishedContent,System.String,System.Boolean)">
+            <summary>
+            Gets thumbnail url. 
+            Checks if thumbnail is defined in post, if not - returns crop of main image, if it is absent - default thumbnail image crop.
+            
+                Priority: 1.Thumbnail 2.Image 3.Default site thumbnail
+            
+            TODO: rewrite for v7 - crops, better Value Converters implementation, etc.
+            TODO: checking for crops and creating files from coordinates
+            </summary>
+            <param name="post"></param>
+            <param name="cropName"></param>
+            <param name="cropThumb">use thumbnail crop if set to true</param>
+            <returns>thumbnail url</returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetImageUrl(Umbraco.Core.Models.IPublishedContent,System.String,System.String)">
+            <summary>
+            Gets main image url.
+            
+            Gets crop if cropname specified
+            
+            TODO: rewrite for v7 - crops, better Value Converters implementation, etc.
+            </summary>
+            <param name="post"></param>
+            <param name="cropName"></param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetIdStr(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            WORKAROUND for "Umbraco Core Property Value Converters" package (returns IPublishedContent for media picker)
+            TODO: delete this
+            </summary>
+            <param name="node"></param>
+            <param name="propertyAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetCrop(System.String,System.String)">
+            <summary>
+            Gets the specified crop from ImageCropper string value
+            </summary>
+            <param name="cropperValue"></param>
+            <param name="croppName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetQrCodeUrl(System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates QR code using Google chart api.
+            Returns url of created qr code.
+            </summary>
+            <param name="dataToEncode"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetImagesUrl(Umbraco.Core.Models.IPublishedContent,System.String,System.String)">
+            <summary>
+            Gets images url list.
+            
+            Gets crops if cropname specified
+            </summary>
+            <param name="post"></param>
+            <param name="cropName"></param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.ImageHelpers.GetImageUrl(System.Int32,System.String)">
+            <summary>
+            Gets image url by its id
+            </summary>
+            <param name="pictureID"></param>
+            <param name="cropName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.MailHelper">
+            <summary>
+            Simple class for sending emails in Umbraco
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.MailHelper.SendMailTemplate(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Umbraco.Core.Models.Membership.IUser},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Send email using template
+            </summary>
+            <param name="subject"></param>
+            <param name="templateUrl">template url relative to web root</param>
+            <param name="from"></param>
+            <param name="recipients"></param>
+            <param name="templateData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.MailHelper.SendMailTemplate(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Send email using template
+            </summary>
+            <param name="subject"></param>
+            <param name="templateUrl">template url relative to web root</param>
+            <param name="from"></param>
+            <param name="recipients">comma seperated emails</param>
+            <param name="templateData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.MailHelper.GetEmailRecipients(System.String)">
+            <summary>
+            Gets email recipients from root node by fieldName
+            NOTE: if current node from umbraco context is not available - gets first homepage with urlname "home"
+            TODO: get current culture homepage
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.TagHelpers.GetRelatedPosts(Umbraco.Core.Models.IPublishedContent,System.Int32,System.String,System.String)">
+            <summary>
+            Returns related by tag nodes.
+            Sorted by score: more tags in common - bigger score. Same score item order is randomized. 
+            </summary>
+            <param name="node"></param>
+            <param name="limit"></param>
+            <param name="doctypeAlias">filter by document type</param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.TemplateHelpers">
+            <summary>
+            Helpers for templates. (generating html, checking parameters, etc.)
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.TemplateHelpers.ParameterFilled(System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+            Checks if macro parameter is defined and if it is not blank
+            </summary>
+            <param name="parameters"></param>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.TemplateHelpers.GetDownloadUrl(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Gets download url for node ([path]/download/[node name])
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.HtmlDownloadLink`1">
+            <summary>
+            Generates download link for site
+            </summary>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.UmbracoHelperExtensions">
+            <summary>
+            Extensions for Umbraco helper.
+            
+            Bridge to needed methods.
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoHelperExtensions.GetSettingNode(Umbraco.Web.UmbracoHelper,System.String)">
+            <summary>
+            gets setting node by name from first site
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoHelperExtensions.GetLibraryNode(Umbraco.Web.UmbracoHelper,System.String)">
+            <summary>
+            gets library node by name from first site
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers">
+            <summary>
+            Helpers to get/convert/etc. data from umbraco node/field should go here
+            </summary>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GenerateCSSClass(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Generates css class for current node from its doctype and name
+            </summary>
+            <param name="currentNode"></param>
+            <returns>
+            Doctypes: post, category, homepage, other-type
+            </returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetPickerUrl(System.String)">
+            <summary>
+            Gets the url picker url
+            </summary>
+            <param name="urlPickerValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetPickerNode(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Gets content node from url picker
+            </summary>
+            <param name="node"></param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetPickerUrl(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Gets url picker url
+            </summary>
+            <param name="node"></param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetMultiPickerUrl(System.String)">
+            <summary>
+            Gets the url picker url
+            NOTE: gets adds only links with title
+            </summary>
+            <param name="urlPickerValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetMultiPickerUrl(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Gets the url picker url
+            </summary>
+            <param name="urlPickerValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetTargetValue(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Gets link target value from node.
+            
+            Returns "_self" if target is not specified
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetSelectedUsers(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Gets selected users list from Multi User Select type field
+            </summary>
+            <param name="node"></param>
+            <param name="propertyAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.IsCategory(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Checks if passed node is category (from adform umbraco bootstrap doctype structure)
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.RelativeUrl(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Returns relative to root element url
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetDirectUrl(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            Returns direct url which can be different based on doctype (ex.: creative space preview, case study download link)
+            
+            TODO: create better, more flexible solution to doctype mapping: label on doctype or extend PropertyTypeMap
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetIdList(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Gets integer id list from content field. For use with multi-node picker fields.
+            </summary>
+            <param name="node"></param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PG.UmbracoExtensions.Helpers.UmbracoNodeHelpers.GetTreePickerNode(Umbraco.Core.Models.IPublishedContent,System.String)">
+            <summary>
+            Simple helper for getting first Multi-Node Tree Picker property node
+            </summary>
+            <param name="node"></param>
+            <param name="fieldAlias"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
